@@ -1,7 +1,10 @@
+package app;
+
 import java.util.ArrayList;
 import java.util.List;
+import app.personas.*; //En este caso importo todas las clases personas
 
-public class Contenido {
+public abstract class Contenido {
     private String nombre;
     private Genero genero;
     private Idioma idiomaOrigen;// Idioma Origen
@@ -40,12 +43,11 @@ public class Contenido {
         this.añoLanzamiento = añoLanzamiento;
     }
 
-    public List<Actor> getActores;
-    {
+    public List<Actor> getActores() {
         return this.actores;
     }
 
-    public List<Actor> setActores(List<Actor> actores) {
+    public void setActores(List<Actor> actores) {
         this.actores = actores;
     }
 }

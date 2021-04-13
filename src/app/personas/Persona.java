@@ -1,4 +1,6 @@
-public class Persona {
+package app.personas;
+
+public abstract class Persona {
     private String nombre;
 
     public String getNombre(){

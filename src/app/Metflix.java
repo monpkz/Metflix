@@ -1,10 +1,14 @@
+package app;
+
 import java.util.ArrayList;
 import java.util.List;
+import app.personas.*;
 
 public class Metflix {
 
     public List<Pelicula> peliculas = new ArrayList<>();
     public List<Serie> series = new ArrayList<>();
+    public List<INominable> nominados = new ArrayList<>();
 
     // Metodo que inicializa el catalogo cno las pelis/series qeu querramos
     public void inicializarCatalogo() {
@@ -40,9 +44,12 @@ public class Metflix {
         actor = new Actor(); // Creo un nuevo actor, pero referenciado con la variable actor
         actor.setNombre("Christian Bale");
 
-        batman.getActores.add(actor);
+        batman.getActores().add(actor);
 
         this.peliculas.add(batman);
+
+        this.nominados.add(batman);
+        this.nominados.add(actor);
 
         // agrego pelicula Scarface
         Pelicula scarface;
@@ -55,9 +62,10 @@ public class Metflix {
         actor = new Actor();
         actor.setNombre("Al Pacino");
 
-        scarface.getActores.add(actor);
+        scarface.getActores().add(actor);
 
         this.peliculas.add(scarface);
+        this.nominados.add(scarface);
 
         // agrego pelicula midsommar
         Pelicula midsommar;
@@ -70,7 +78,7 @@ public class Metflix {
         actor = new Actor();
         actor.setNombre("Florence Pugh");
 
-        midsommar.getActores.add(actor);
+        midsommar.getActores().add(actor);
 
         this.peliculas.add(midsommar);
 
@@ -83,12 +91,12 @@ public class Metflix {
         actor = new Actor();
         actor.setNombre("Neil Patrick Harris");
 
-        howIMetYM.getActores.add(actor);
+        howIMetYM.getActores().add(actor);
 
         actor = new Actor();
         actor.setNombre("Cobie Smulders");
 
-        howIMetYM.getActores.add(actor);
+        howIMetYM.getActores().add(actor);
 
         // T5:E11
         // creo la temporada
@@ -96,24 +104,22 @@ public class Metflix {
         temporada.setNumero(5);
 
         // Creo el episodio
-        Episodio episodio = new Episodio();
-        episodio.nombre = "The last cigarrette";
-        episodio.numero = 11;
+        Episodio episodio = new Episodio(11, "The last cigarrette");
+        // episodio.nombre = "The last cigarrette";
+        // episodio.numero = 11;
 
         // vinculo temporada con episodio
         temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.setNombre("Definitions");
-        episodio.setNumero(1);
+        episodio = new Episodio(1, "Definitions", 41);
 
         temporada.getEpisodios().add(episodio);
 
-        Websodio ws = new Websodio();
-        ws.setNombre("Blue");
-        ws.setNumero(35);
+        Websodio ws = new Websodio(35, "Blue", "http://miespisodio.com/websodio.avi");
+        // ws.setNombre("Blue");
+        // ws.setNumero(35);
         ws.setDuracion(42);
-        ws.setlink("http://miespisodio.com/websodio.avi");
+        // ws.setlink("http://miespisodio.com/websodio.avi");
 
         temporada.getEpisodios().add(ws);
 
@@ -126,17 +132,15 @@ public class Metflix {
         temporada.setNumero(3);
 
         // Creo el episodio
-        episodio = new Episodio();
-        episodio.setNombre("Wait for it");
-        episodio.setNumero(1);
-        episodio.setDuracion(40);
+        episodio = new Episodio(1, "Wait for it", 40);
+        // episodio.setNombre("Wait for it");
+        // episodio.setNumero(1);
+        // episodio.setDuracion(40);
 
         // vinculo temporada con episodio
         temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.setNombre("Little Boys");
-        episodio.setNumero(4);
+        episodio = new Episodio(4, "Little Boys");
         episodio.setDuracion(44);
 
         temporada.getEpisodios().add(episodio);
@@ -148,143 +152,124 @@ public class Metflix {
         this.series.add(howIMetYM);
 
         Serie bbt = new Serie();
-        bbt.nombre = "The BigBang Theory";
-        bbt.añoLanzamiento = 2007;
+        bbt.setNombre("The BigBang Theory");
+        bbt.setAñoLanzamiento(2007);
 
         actor = new Actor();
-        actor.nombre = "Kaley Cuoco";
+        actor.setNombre("Kaley Cuoco");
 
-        bbt.actores.add(actor);
+        bbt.getActores().add(actor);
 
         // creo la temporada
         temporada = new Temporada();
-        temporada.numero = 1;
+        temporada.setNumero(1);
 
         // Creo el episodio
-        episodio = new Episodio();
-        episodio.nombre = "Pilot";
-        episodio.numero = 1;
+        episodio = new Episodio(1, "Pilot", 41);
 
         // vinculo temporada con episodio
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.nombre = "The Cooper-Hofstadter Polarizatio";
+        episodio = new Episodio(13, "The Cooper-Hofstadter Polarizatio");
+        episodio.setDuracion(43);
 
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
         // creo la temporada
-        bbt.temporadas.add(temporada);
+        bbt.getTemporadas().add(temporada);
 
         this.series.add(bbt);
 
         // creo serie Stranger Trings
         Serie strangerT = new Serie();
-        strangerT.nombre = "Stranger Things";
-        strangerT.añoLanzamiento = 2016;
+        strangerT.setNombre("Stranger Things");
+        strangerT.setAñoLanzamiento(2016);
 
         actor = new Actor();
-        actor.nombre = "Millie Bobby Brown";
+        actor.setNombre("Millie Bobby Brown");
 
-        strangerT.actores.add(actor);
+        strangerT.getActores().add(actor);
 
         actor = new Actor();
-        actor.nombre = "Winona Ryder";
+        actor.setNombre("Winona Ryder");
 
-        strangerT.actores.add(actor);
+        strangerT.getActores().add(actor);
 
         // T2 : E3,E4
         temporada = new Temporada();
-        temporada.numero = 2;
+        temporada.setNumero(2);
 
         // creo episodio 3 y 4
-        episodio = new Episodio();
-        episodio.nombre = "«Chapter Three: The Pollywog»";
-        episodio.numero = 3;
+        episodio = new Episodio(3, "«Chapter Three: The Pollywog»");
 
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.nombre = "«Chapter Four: Will the Wise»";
-        episodio.numero = 4;
+        episodio = new Episodio(4, "«Chapter Four: Will the Wise»");
 
-        temporada.episodios.add(episodio);
-        strangerT.temporadas.add(temporada);
+        temporada.getEpisodios().add(episodio);
+        strangerT.getTemporadas().add(temporada);
 
         this.series.add(strangerT);
 
         // T3 : E5,E6
         temporada = new Temporada();
-        temporada.numero = 3;
+        temporada.setNumero(3);
 
-        episodio = new Episodio();
-        episodio.nombre = "«Chapter Five: The Flayed»";
-        episodio.numero = 5;
+        episodio = new Episodio(5, "«Chapter Five: The Flayed»");
 
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.nombre = "«Chapter Six: E Pluribus Unum»";
-        episodio.numero = 6;
+        episodio = new Episodio(6, "«Chapter Six: E Pluribus Unum»");
 
-        temporada.episodios.add(episodio);
-        strangerT.temporadas.add(temporada);
+        temporada.getEpisodios().add(episodio);
+        strangerT.getTemporadas().add(temporada);
 
         this.series.add(strangerT);
 
         // creo serie You con dos temporadas y dos episodios
         Serie you = new Serie();
-        you.nombre = "You";
-        you.añoLanzamiento = 2018;
+        you.setNombre("You");
+        you.setAñoLanzamiento(2018);
 
         actor = new Actor();
-        actor.nombre = "Penn Badgley";
+        actor.setNombre("Penn Badgley");
 
-        you.actores.add(actor);
+        you.getActores().add(actor);
 
         actor = new Actor();
-        actor.nombre = "Elizabeth Lail";
+        actor.setNombre("Elizabeth Lail");
 
-        you.actores.add(actor);
+        you.getActores().add(actor);
 
         // T1 E9, E10
         temporada = new Temporada();
-        temporada.numero = 1;
+        temporada.setNumero(1);
 
-        episodio = new Episodio();
-        episodio.nombre = "«Candace»";
-        episodio.numero = 9;
+        episodio = new Episodio(9, "«Candace»");
 
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.nombre = "«Bluebeard's Castle»";
-        episodio.numero = 10;
+        episodio = new Episodio(10, "«Bluebeard's Castle»");
 
-        temporada.episodios.add(episodio);
-        you.temporadas.add(temporada);
+        temporada.getEpisodios().add(episodio);
+        you.getTemporadas().add(temporada);
 
         this.series.add(you);
 
         // T2 E6, E7
         temporada = new Temporada();
-        temporada.numero = 2;
+        temporada.setNumero(2);
 
-        episodio = new Episodio();
-        episodio.nombre = "«Farewell, My Bunny»";
-        episodio.numero = 6;
+        episodio = new Episodio(6, "«Farewell, My Bunny»");
 
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.nombre = "«Ex-istential Crisis»";
-        episodio.numero = 7;
+        episodio = new Episodio(7, "«Ex-istential Crisis»");
 
-        temporada.episodios.add(episodio);
-        you.temporadas.add(temporada);
+        temporada.getEpisodios().add(episodio);
+        you.getTemporadas().add(temporada);
 
         this.series.add(you);
-
     }
 
     // Buscar Serie
@@ -299,14 +284,54 @@ public class Metflix {
         for (Serie serie : this.series) {
             // pregunto si el nombre de la serie actual
             // que estoy recorriendo es la que necesito
-            if (serie.nombre.equals(nombreABuscar))
+            if (serie.getNombre().equals(nombreABuscar))
                 return serie; // devuelvo esta serie.
         }
         // si llego hasta aca, es porque no encontro la serie.
         return null;
-
     }
 
     // buscar un director
-    //
+
+    // Buscar Serie
+    public Serie buscarSerieV2(String nombreABuscar) {
+        Serie serieBuscada = null;
+        // En este caso se recorre TODO(aunque haya 1000 series)
+        // y al final se devuelve si encontr una serie.
+        // en el caso anterior, se devuelve una vez encontrada.
+        // ej si hay 1000 series pero esta en la posicion 3, hace 3 vueltas
+        for (Serie serie : this.series) {
+            if (serie.getNombre().equals(nombreABuscar))
+                serieBuscada = serie;
+        }
+        return serieBuscada;
+        /*
+         * if (serieBuscada == null) return null; else return serieBuscada;
+         */
+
+    }
+
+    public void mostrarNominaciones() {
+        // voy a imprimir el trailer de nominados.
+        int totalPelis = 0;
+        int totalActores = 0;
+        for (INominable nominado : this.nominados) {
+            nominado.reproducirTrailerNominacion();
+
+            if (nominado instanceof Pelicula)
+                totalPelis++;
+            if (nominado instanceof Actor)
+                totalActores++;
+        }
+        System.out.println("Peliculas nominadas: " + totalPelis);
+        System.out.println("Actores nominados: " + totalActores);
+    }
+
+    public void reproducirEpisodioDeSerie(String nombreSerie, int nroTemporada, int nroEpisodio) {
+
+        Serie serie = this.buscarSerie(nombreSerie);
+        Temporada temporada = serie.buscarTemporada(nroTemporada);
+        Episodio episodio = temporada.buscarEpisodio(nroEpisodio);
+        episodio.reproducir();
+    }
 }

@@ -1,3 +1,5 @@
+package app;
+
 import java.util.*;
 
 public class Serie extends Contenido {
@@ -12,10 +14,10 @@ public class Serie extends Contenido {
         }
         return null;
     }
-    public List<Temporada> getTemporada() {
-        return this.temporada;
+    public List<Temporada> getTemporadas() {
+        return this.temporadas;
     }
-    public void setTemporada(List<Temporada> temporada) {
-        this.temporada = temporada;
+    public void setTemporadas(List<Temporada> temporadas) {
+        this.temporadas = temporadas;
     }
 }

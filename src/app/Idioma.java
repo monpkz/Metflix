@@ -1,3 +1,5 @@
+package app;
+
 public class Idioma {
     private String nombre;
     private String alfabeto;
@@ -14,7 +16,7 @@ public class Idioma {
         return this.alfabeto;
     }
 
-    public void setNombre(String alfabeto) {
+    public void setAlfabeto(String alfabeto) {
         this.alfabeto = alfabeto;
     }
 
